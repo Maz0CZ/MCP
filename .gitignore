@@ -1,0 +1,5 @@
+/vendor/
+/storage/panel.sqlite
+/storage/servers/*
+!.gitkeep
+.DS_Store
