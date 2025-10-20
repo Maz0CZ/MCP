@@ -1,0 +1,25 @@
+{block content}
+<section class="auth">
+    <div class="panel">
+        <h1>Create your <span class="logo-bold">Ultimate</span>Panel account</h1>
+        <p>Deploy your first server in under a minute.</p>
+        {form signUpForm}
+            <ul n:if="$form->hasErrors()" class="form-errors">
+                <li n:foreach="$form->errors as $error">{$error}</li>
+            </ul>
+            <div class="field">
+                {label email/}
+                {input email}
+            </div>
+            <div class="field">
+                {label password/}
+                {input password}
+            </div>
+            <div class="actions">
+                {input send}
+            </div>
+        {/form}
+        <p class="muted">Already registered? <a href="{link Sign:in}">Sign in</a>.</p>
+    </div>
+</section>
+{/block}

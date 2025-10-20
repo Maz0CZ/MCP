@@ -1,0 +1,30 @@
+{block content}
+<section class="hero">
+    <div class="hero-copy">
+        <h1>Ultra-light multi-game hosting on Debian</h1>
+        <p>Spin up cracked or legit servers for Minecraft, SteamCMD builds, and custom Wine wrappers in seconds with <span class="accent">Ultimate</span> process control.</p>
+        <div class="cta-group">
+            <a class="btn-primary" href="{link Sign:up}">Get started</a>
+            <a class="btn-ghost" href="{link Sign:in}">Sign in</a>
+        </div>
+    </div>
+    <div class="hero-art">
+        <div class="orb"></div>
+        <div class="grid"></div>
+    </div>
+</section>
+<section class="cards">
+    <h2 class="section-title">Game-ready packages, warez-approved</h2>
+    <div class="card-grid">
+        <div n:foreach="$packages as $package" class="card">
+            <div class="card-head">
+                <h3>{$package['name']}</h3>
+                <span class="badge">{$package['game_label']}</span>
+            </div>
+            <p>{$package['description']}</p>
+            <div class="card-meta">{$package['ram_mb']} MB RAM budget</div>
+            <a class="btn-secondary" href="{link Sign:up}">Choose {$package['name']}</a>
+        </div>
+    </div>
+</section>
+{/block}

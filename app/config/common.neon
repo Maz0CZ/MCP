@@ -1,0 +1,71 @@
+parameters:
+    storageDir: %appDir%/../storage
+    databaseFile: %storageDir%/ultimatepanel.sqlite
+    enableProcessControl: true
+    screenBinary: screen
+    brandName: "UltimatePanel"
+    accentColor: "#ab47bc"
+    mail:
+        enabled: false
+        host: localhost
+        port: 25
+        username: null
+        password: null
+        from: "UltimatePanel <no-reply@example.com>"
+        encryption: null
+    games:
+        minecraft_offline:
+            title: "Minecraft Java (offline mode)"
+            bundledExecutable: %storageDir%/bins/minecraft/server.jar
+            executable: "{directory}/minecraft_server.jar"
+            command: "java -Xms{memory}M -Xmx{memory}M -jar {executable} nogui --port {port}"
+            log: "{directory}/logs/latest.log"
+            files:
+                eula.txt: |-
+                    eula=true
+                server.properties: |-
+                    server-port={port}
+                    query.port={port}
+                    online-mode=false
+                    enable-rcon=false
+                    enforce-secure-profile=false
+                    motd=UltimatePanel offline-friendly node
+        generic_linux:
+            title: "Generic Linux dedicated"
+            bundledExecutable: %storageDir%/bins/generic/start.sh
+            executable: "{directory}/start.sh"
+            command: "{executable} --port {port} --memory {memory}"
+            log: "{directory}/console.log"
+            files:
+                start.sh: |-
+                    #!/bin/bash
+                    cd "{directory}"
+                    ./server --port {port} --memory {memory}
+                README.txt: |-
+                    Drop your cracked or legitimate dedicated server build here and adjust start.sh.
+        wine_wrapper:
+            title: "Wine / Proton wrapper"
+            bundledExecutable: %storageDir%/bins/wine/launch.sh
+            executable: "{directory}/launch.sh"
+            command: "{executable} --port {port}"
+            log: "{directory}/console.log"
+            files:
+                launch.sh: |-
+                    #!/bin/bash
+                    export WINEDEBUG=-all
+                    export WINEPREFIX="{directory}/wine"
+                    mkdir -p "${WINEPREFIX}"
+                    wine64 ./server.exe -port {port}
+
+services:
+    router: App\RouterFactory::createRouter
+    database: App\Model\Database(%databaseFile%)
+    passwords: Nette\Security\Passwords
+    userRepository: App\Model\UserRepository(@database)
+    packageRepository: App\Model\PackageRepository(@database)
+    serverRepository: App\Model\ServerRepository(@database)
+    gameCatalog: App\Model\GameCatalog(%games%)
+    serverManager: App\Model\ServerManager(@serverRepository, @packageRepository, @gameCatalog, %storageDir%, %enableProcessControl%, %screenBinary%)
+    mailerFactory: App\Model\MailerFactory(%mail%)
+    authService: App\Model\AuthService(@database, @userRepository, @passwords, Nette\Http\Session::class)
+    consoleStreamer: App\Model\ConsoleStreamer

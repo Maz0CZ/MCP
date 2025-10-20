@@ -1,0 +1,5 @@
+/ultimatepanel.sqlite
+/servers/*
+!/servers/.gitkeep
+/bins/*
+!/bins/.gitkeep

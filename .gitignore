@@ -1,0 +1,6 @@
+/vendor/
+/temp/
+/log/
+/.idea/
+/.vscode/
+composer.lock

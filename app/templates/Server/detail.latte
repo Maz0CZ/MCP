@@ -1,0 +1,18 @@
+{block content}
+<section class="panel wide">
+    <h1>Server #{$server['id']} console</h1>
+    <p class="muted">{$game['title'] ?? $game['key']} &middot; live log from <code>{$server['screen_name']}</code> on port {$server['port']}.</p>
+    <div class="console" data-server="{$server['id']}">
+        <pre id="console-log">Loading log...</pre>
+        <form id="console-command">
+            <input type="text" name="command" placeholder="Enter console command" autocomplete="off">
+            <button type="submit" class="btn-primary">Send</button>
+        </form>
+    </div>
+    <div class="actions row">
+        <button class="btn-secondary" data-action="start" data-server="{$server['id']}">Start</button>
+        <button class="btn-secondary" data-action="stop" data-server="{$server['id']}">Stop</button>
+        <button class="btn-secondary" data-action="restart" data-server="{$server['id']}">Restart</button>
+    </div>
+</section>
+{/block}

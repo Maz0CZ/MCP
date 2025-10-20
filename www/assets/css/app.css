@@ -1,0 +1,442 @@
+:root {
+    color-scheme: dark;
+    --bg: #090909;
+    --panel: #121218;
+    --panel-strong: #1b1b24;
+    --text: #f5f5f7;
+    --muted: #888ca1;
+    --accent: #ab47bc;
+    --accent-soft: rgba(171, 71, 188, 0.15);
+    --border: rgba(255, 255, 255, 0.05);
+    --radius: 18px;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: radial-gradient(circle at top right, rgba(171, 71, 188, 0.2), transparent 50%), var(--bg);
+    color: var(--text);
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.shell {
+    width: min(1100px, 100% - 3rem);
+    margin: 0 auto;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+}
+
+.nav nav a {
+    margin-left: 1.25rem;
+    font-weight: 500;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+    color: var(--text);
+}
+
+.logo-bold {
+    font-weight: 800;
+    color: var(--accent);
+}
+
+main {
+    padding-bottom: 4rem;
+}
+
+.footer {
+    padding: 2rem 0 3rem;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.flash {
+    background: var(--accent-soft);
+    border: 1px solid rgba(171, 71, 188, 0.4);
+    padding: 0.85rem 1.2rem;
+    border-radius: var(--radius);
+    margin-bottom: 1.5rem;
+    color: var(--text);
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2.5rem;
+    align-items: center;
+    padding: 3rem 0 4rem;
+}
+
+.hero-copy h1 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: 1rem;
+}
+
+.hero-copy p {
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.cta-group {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.4rem;
+    border-radius: var(--radius);
+    border: 1px solid transparent;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #c86bff, #ab47bc);
+    color: white;
+    box-shadow: 0 18px 40px -20px rgba(171, 71, 188, 0.9);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 1px solid rgba(171, 71, 188, 0.6);
+    color: var(--accent);
+}
+
+.btn-secondary:hover {
+    box-shadow: 0 8px 20px -12px rgba(171, 71, 188, 0.7);
+}
+
+.btn-ghost {
+    background: var(--panel);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.cards {
+    padding: 1rem 0 4rem;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.8rem;
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.card {
+    background: var(--panel);
+    border-radius: var(--radius);
+    padding: 1.6rem;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: transform 0.2s ease, border 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(171, 71, 188, 0.6);
+}
+
+.card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.badge {
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.card-meta {
+    color: var(--muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.auth .panel,
+.panel {
+    background: var(--panel);
+    border-radius: var(--radius);
+    padding: 2rem;
+    border: 1px solid var(--border);
+    box-shadow: 0 10px 40px -25px rgba(0, 0, 0, 0.6);
+}
+
+.panel.wide {
+    padding: 2.5rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin-bottom: 1.2rem;
+}
+
+.field input,
+.field select {
+    background: var(--panel-strong);
+    border: 1px solid transparent;
+    border-radius: 14px;
+    padding: 0.75rem 1rem;
+    color: var(--text);
+    font-size: 1rem;
+}
+
+.field input:focus,
+.field select:focus {
+    border-color: rgba(171, 71, 188, 0.7);
+    outline: none;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.actions.row {
+    margin-top: 1.5rem;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.dashboard {
+    display: grid;
+    gap: 2rem;
+}
+
+.server-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.server-card {
+    background: var(--panel-strong);
+    border-radius: var(--radius);
+    padding: 1.4rem;
+    border: 1px solid transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.server-card:hover {
+    border-color: rgba(171, 71, 188, 0.4);
+}
+
+.server-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.status {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+.placeholder {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--radius);
+    padding: 2rem;
+    text-align: center;
+}
+
+dl {
+    margin: 0;
+    display: grid;
+    gap: 0.4rem;
+}
+
+dl div {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    color: var(--muted);
+}
+
+dl dd {
+    margin: 0;
+    color: var(--text);
+}
+
+.console {
+    background: var(--panel-strong);
+    border-radius: var(--radius);
+    padding: 1.4rem;
+    border: 1px solid rgba(171, 71, 188, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.console pre {
+    margin: 0;
+    max-height: 320px;
+    overflow-y: auto;
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    background: rgba(0, 0, 0, 0.35);
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.console form {
+    display: flex;
+    gap: 1rem;
+}
+
+.console form input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(171, 71, 188, 0.3);
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    color: var(--text);
+}
+
+.admin-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.admin table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.admin th,
+.admin td {
+    padding: 0.65rem 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.admin th {
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.hero-art {
+    position: relative;
+    min-height: 260px;
+}
+
+.hero-art .orb {
+    position: absolute;
+    top: 10%;
+    right: 15%;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(171, 71, 188, 0.6));
+    filter: blur(2px);
+    opacity: 0.8;
+}
+
+.hero-art .grid {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, rgba(171, 71, 188, 0.25), transparent);
+    border: 1px solid rgba(171, 71, 188, 0.3);
+    backdrop-filter: blur(30px);
+}
+
+@media (max-width: 720px) {
+    .nav nav a {
+        margin-left: 0.8rem;
+        font-size: 0.95rem;
+    }
+
+    .cta-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .console form {
+        flex-direction: column;
+    }
+
+    .console form button {
+        width: 100%;
+    }
+}
+
+.form-errors {
+    list-style: none;
+    margin: 0 0 1.2rem 0;
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    background: rgba(235, 87, 87, 0.12);
+    border: 1px solid rgba(235, 87, 87, 0.4);
+    color: #ffb4c2;
+    font-size: 0.9rem;
+}
+
+.form-errors li + li {
+    margin-top: 0.35rem;
+}
+
+.accent {
+    color: var(--accent);
+    font-weight: 700;
+}
