@@ -21,4 +21,14 @@
     },
     "minimum-stability": "stable",
     "prefer-stable": true
+    "name": "zibuu/mcpanel",
+    "description": "Autonomous Minecraft hosting panel using PHP, SQLite, and PHPMailer",
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    },
+    "autoload": {
+        "files": [
+            "includes/config.php"
+        ]
+    }
 }

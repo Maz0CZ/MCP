@@ -4,3 +4,7 @@
 /.idea/
 /.vscode/
 composer.lock
+/storage/panel.sqlite
+/storage/servers/*
+!.gitkeep
+.DS_Store
