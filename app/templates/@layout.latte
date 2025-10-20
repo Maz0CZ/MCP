@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{$brandName} Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/assets/css/app.css">
+    <script defer src="/assets/js/app.js"></script>
+</head>
+<body>
+    <header class="shell">
+        <div class="nav">
+            <a class="logo" href="{link Home:default}"><span class="logo-bold">MC</span>P</a>
+            <nav>
+                <a n:if="!$user" href="{link Sign:in}">Sign in</a>
+                <a n:if="!$user" href="{link Sign:up}">Create account</a>
+                <a n:if="$user" href="{link Dashboard:default}">Dashboard</a>
+                <a n:if="$user && $user['is_admin']" href="{link Admin:default}">Admin</a>
+                <a n:if="$user" href="{link Sign:out}">Sign out</a>
+            </nav>
+        </div>
+    </header>
+    <main class="shell">
+        <div n:foreach="$flashes as $flash" class="flash {$flash->type}">{$flash->message}</div>
+        {block content}{/block}
+    </main>
+    <footer class="shell footer">
+        <p>&copy; {=date('Y')} {$brandName} Panel – Crafted by Maz0CZ.</p>
+    </footer>
+</body>
+</html>

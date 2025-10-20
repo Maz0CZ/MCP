@@ -1,4 +1,9 @@
 /vendor/
+/temp/
+/log/
+/.idea/
+/.vscode/
+composer.lock
 /storage/panel.sqlite
 /storage/servers/*
 !.gitkeep

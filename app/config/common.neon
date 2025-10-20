@@ -1,0 +1,28 @@
+parameters:
+    storageDir: %appDir%/../storage
+    databaseFile: %storageDir%/mcp.sqlite
+    spigotJar: %storageDir%/spigot/spigot.jar
+    enableProcessControl: true
+    screenBinary: screen
+    javaBinary: java
+    brandName: MCP
+    mail:
+        enabled: false
+        host: localhost
+        port: 25
+        username: null
+        password: null
+        from: "MCP Panel <no-reply@example.com>"
+        encryption: null
+
+services:
+    router: App\RouterFactory::createRouter
+    database: App\Model\Database(%databaseFile%)
+    passwords: Nette\Security\Passwords
+    userRepository: App\Model\UserRepository(@database)
+    packageRepository: App\Model\PackageRepository(@database)
+    serverRepository: App\Model\ServerRepository(@database)
+    serverManager: App\Model\ServerManager(@serverRepository, @packageRepository, %storageDir%, %spigotJar%, %enableProcessControl%, %screenBinary%, %javaBinary%)
+    mailerFactory: App\Model\MailerFactory(%mail%)
+    authService: App\Model\AuthService(@database, @userRepository, @passwords, Nette\Http\Session::class)
+    consoleStreamer: App\Model\ConsoleStreamer(%storageDir%)
