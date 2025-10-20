@@ -1,0 +1,43 @@
+{block content}
+<section class="admin">
+    <div class="panel wide">
+        <h1>Admin overview</h1>
+        <p class="muted">Monitor every tenant across the MCP platform.</p>
+        <div class="admin-grid">
+            <div class="panel">
+                <h2>Users</h2>
+                <table>
+                    <thead>
+                        <tr><th>ID</th><th>Email</th><th>Role</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr n:foreach="$users as $user"><td>{$user['id']}</td><td>{$user['email']}</td><td>{if $user['is_admin']}Admin{else}User{/if}</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel">
+                <h2>Packages</h2>
+                <table>
+                    <thead>
+                        <tr><th>ID</th><th>Name</th><th>RAM</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr n:foreach="$packages as $package"><td>{$package['id']}</td><td>{$package['name']}</td><td>{$package['ram_mb']} MB</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel wide">
+                <h2>Servers</h2>
+                <table>
+                    <thead>
+                        <tr><th>ID</th><th>User</th><th>Package</th><th>Port</th><th>Status</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr n:foreach="$servers as $server"><td>{$server['id']}</td><td>{$server['user_email']}</td><td>{$server['package_name']}</td><td>{$server['port']}</td><td>{$server['status']}</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{/block}

@@ -1,0 +1,38 @@
+{block content}
+<section class="dashboard">
+    <div class="panel wide">
+        <h1>Your servers</h1>
+        <p class="muted">Real-time control with direct console access.</p>
+        <div class="server-grid">
+            <div n:if="empty($servers)" class="placeholder">
+                <p>No servers yet. Provision one below.</p>
+            </div>
+            <div n:foreach="$servers as $server" class="server-card">
+                <div class="server-meta">
+                    <h3>Server #{$server['id']}</h3>
+                    <span class="status {$server['status']}">{$server['status']}</span>
+                </div>
+                <dl>
+                    <div><dt>Package</dt><dd>{$packageMap[$server['package_id']]['name'] ?? ('Package #' . $server['package_id'])}</dd></div>
+                    <div><dt>RAM</dt><dd>{$packageMap[$server['package_id']]['ram_mb'] ?? '?'} MB</dd></div>
+                    <div><dt>Port</dt><dd>{$server['port']}</dd></div>
+                    <div><dt>Screen</dt><dd>{$server['screen_name']}</dd></div>
+                </dl>
+                <a class="btn-secondary" href="{link Server:detail, id => $server['id']}">Open console</a>
+            </div>
+        </div>
+    </div>
+    <div class="panel">
+        <h2>Provision a new server</h2>
+        {form provisionForm}
+            <div class="field">
+                {label package/}
+                {input package}
+            </div>
+            <div class="actions">
+                {input create}
+            </div>
+        {/form}
+    </div>
+</section>
+{/block}

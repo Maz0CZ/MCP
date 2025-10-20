@@ -1,0 +1,25 @@
+{block content}
+<section class="auth">
+    <div class="panel">
+        <h1>Welcome back</h1>
+        <p>Sign in to manage your servers.</p>
+        {form signInForm}
+            <ul n:if="$form->hasErrors()" class="form-errors">
+                <li n:foreach="$form->errors as $error">{$error}</li>
+            </ul>
+            <div class="field">
+                {label email/}
+                {input email}
+            </div>
+            <div class="field">
+                {label password/}
+                {input password}
+            </div>
+            <div class="actions">
+                {input send}
+            </div>
+        {/form}
+        <p class="muted">Need an account? <a href="{link Sign:up}">Create one</a>.</p>
+    </div>
+</section>
+{/block}
